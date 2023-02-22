@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>React App</h1>
+    <h2 id="heading">
+
+    </h2>
+    <button onclick="makeApiCall()">Fetch Protected Data</button>
+    <b>
+        <p id="msg"></p>
+    </b>
+</body>
+
+<script>
+
+
+
+    function makeApiCall() {
+        fetch('http://localhost:6069/with/test')
+            .then(function (result) {
+                if (result.status === 403) {
+                    document.getElementById("msg").innerHTML = `Failed! | status - ${result.status}`;
+                } else {
+                    document.getElementById("msg").innerHTML = `Success! | status - ${result.status}`;
+                }
+            })
+            .catch(function (err) {
+                console.error(err);
+                document.getElementById("msg").innerHTML = "Failed!";
+            });
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        console.log({ decodedCookie })
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    const token = getCookie("token");
+    if (token) {
+        document.getElementById("heading").innerHTML = "Welcome, you are logged in";
+    } else {
+        document.getElementById("heading").innerHTML = "This is a protected page";
+    }
+
+</script>
+
+</html>
