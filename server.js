@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 const cookieParser = require("cookie-parser");
+const PORT = process.env.PORT || 3030;
 
 app.use(cookieParser());
 
@@ -46,4 +47,6 @@ app.get('/without', function(req, res) {
 
 
 
-app.listen(6069);
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
+});
