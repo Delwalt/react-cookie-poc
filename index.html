@@ -17,7 +17,7 @@
 
 
     function makeApiCall() {
-        fetch('http://localhost:6069/with/test')
+        fetch('/with/test')
             .then(function (result) {
                 if (result.status === 403) {
                     document.getElementById("msg").innerHTML = `Failed! | status - ${result.status}`;
