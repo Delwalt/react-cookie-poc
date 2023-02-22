@@ -17,7 +17,7 @@ app.all('/*', function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get("/with/test", (req, res) => {
+app.get("/protected", (req, res) => {
   const token = req.cookies.token;
 
   if (!token) {

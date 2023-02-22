@@ -17,7 +17,7 @@
 
 
     function makeApiCall() {
-        fetch('/with/test')
+        fetch('/protected')
             .then(function (result) {
                 if (result.status === 403) {
                     document.getElementById("msg").innerHTML = `Failed! | status - ${result.status}`;
