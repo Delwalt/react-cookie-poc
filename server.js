@@ -2,7 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 const cookieParser = require("cookie-parser");
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 6069;
 
 app.use(cookieParser());
 
